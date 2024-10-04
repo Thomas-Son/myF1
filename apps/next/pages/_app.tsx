@@ -30,8 +30,8 @@ function MyApp({ Component, pageProps }: SolitoAppProps) {
         />
       </Head>
       <ThemeProvider>
-        <Header />
-        <Component {...pageProps} />
+        <Header/>
+        <Component {...pageProps}/>
       </ThemeProvider>
     </>
   )

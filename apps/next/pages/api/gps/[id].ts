@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import dbConnect from "app/lib/dbConnect";
-import Driver from "app/models/Driver";
+import Gp from "app/models/Gp";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,11 +16,11 @@ export default async function handler(
   switch (method) {
     case "GET" :
       try {
-        const driver = await Driver.findById(id);
-        if (!driver) {
+        const gp = await Gp.findById(id);
+        if (!gp) {
           return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: driver });
+        res.status(200).json({ success: true, data: gp });
       } catch (error) {
         res.status(400).json({ success: false });
       }
@@ -28,14 +28,14 @@ export default async function handler(
 
     case "PUT" :
       try {
-        const driver = await Driver.findByIdAndUpdate(id, req.body, {
+        const gp = await Gp.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!driver) {
+        if (!gp) {
           return res.status(400).json({ success: false });
         }
-        res.status(200).json({ success: true, data: driver });
+        res.status(200).json({ success: true, data: gp });
       } catch (error) {
         res.status(400).json({ success: false });
       }
@@ -43,8 +43,8 @@ export default async function handler(
 
     case "DELETE" :
       try {
-        const deletedDriver = await Driver.deleteOne({ _id: id });
-        if (!deletedDriver) {
+        const deletedGp = await Gp.deleteOne({ _id: id });
+        if (!deletedGp) {
           return res.status(400).json({ success: false });
         }
         res.status(200).json({ success: true, data: {} });

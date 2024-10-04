@@ -12,7 +12,7 @@ import { Platform } from 'react-native'
 export function HomeScreen() {
 
   return (
-    <YStack f={1} gap="$8" margin="auto" marginTop="$8" width="90vw">
+    <YStack f={1} gap="$8" margin="auto" marginTop="$8" width="90%">
       
       <XStack
         pos="absolute"
@@ -36,13 +36,13 @@ export function HomeScreen() {
 
         <YStack alignItems="center" gap="$3">
           <TextLink href="/gp-2024">
-            <Button width="180px">Grand Prix 2024</Button>
+            <Button width="$14">Grand Prix 2024</Button>
           </TextLink>
           <TextLink href="/pilotes">
-            <Button width="180px">Pilotes</Button>
+            <Button width="$14">Pilotes</Button>
           </TextLink>
           <TextLink href="/equipe">
-            <Button width="180px">Équipes</Button>
+            <Button width="$14">Équipes</Button>
           </TextLink>
         </YStack>
       </YStack>
@@ -55,10 +55,10 @@ export function HomeScreen() {
 
         <YStack alignItems="center" gap="$3">
           <TextLink href="/regles">
-            <Button width="180px">Règles</Button>
+            <Button width="$14">Règles</Button>
           </TextLink>
           <TextLink href="/paris">
-            <Button width="180px">Pari</Button>
+            <Button width="$14">Pari</Button>
           </TextLink>
         </YStack>
       </YStack>
@@ -71,7 +71,7 @@ export function HomeScreen() {
 
         <YStack alignItems="center" gap="$3">
           <TextLink href="/admin">
-            <Button width="180px">Administrateur</Button>
+            <Button width="$14">Administrateur</Button>
           </TextLink>
         </YStack>
       </YStack>

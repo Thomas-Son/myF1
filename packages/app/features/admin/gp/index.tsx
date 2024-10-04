@@ -9,16 +9,15 @@ import {
 import { TextLink } from "solito/link";
 import { useEffect, useState } from "react";
 
-export default function DriverAdmin() {
+export default function TeamAdmin() {
 
-  const [drivers, setDrivers] = useState([])
+  const [gp, setGp] = useState([])
 
   useEffect(() => {
         async function getData() {
             try {
-                const posts = await (await fetch("/api/drivers")).json();
-                setDrivers(posts.data);
-                console.log(drivers)
+                const posts = await (await fetch("/api/gps")).json();
+                setGp(posts.data);
             } catch (error) {
                 throw Error(error);
             }
@@ -28,24 +27,24 @@ export default function DriverAdmin() {
 
   return(
     <YStack f={1} gap="$4" margin="auto" marginTop="$8" width="90%">
-      <H2>Liste des pilotes</H2>
+      <H2>Liste des Grand Prix</H2>
       <Separator/>
 
       {
-        !drivers ? (null)
+        !gp ? (null)
         :
         (
-          drivers.map((driver) => (
+          gp.map((data) => (
             <XStack justifyContent="space-between">
-              <H3>{driver.name}</H3>
+              <H3>{data.name}</H3>
               <XStack gap="$4">
-                <TextLink href={"/admin/pilotes/" + driver._id + "/modifier"}>
+                <TextLink href={"/admin/equipes/" + data._id + "/modifier"}>
                     <Button width="$11">
                         Modifier
                     </Button>
                 </TextLink>
 
-                <TextLink href={"/admin/pilotes/" + driver._id + "/supprimer"}>
+                <TextLink href={"/admin/equipes/" + data._id + "/supprimer"}>
                     <Button width="$11">
                         Supprimer
                     </Button>
@@ -56,7 +55,7 @@ export default function DriverAdmin() {
         )
       }
 
-      <TextLink href="/admin/pilotes/ajouter">
+      <TextLink href="/admin/gp/ajouter">
         <Button width="$12" margin="auto">Ajouter</Button>
       </TextLink>
     </YStack>

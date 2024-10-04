@@ -16,7 +16,7 @@ export default function Header() {
     const [active, setActive] = useState(false)
 
     return (
-        <CardHeader gap="$5" alignItems="center" bg="red">
+        <CardHeader gap="$5" alignItems="center" bg="$red9">
             <TextLink href="/">
                 <H1 color="white">myF1</H1>
             </TextLink>
@@ -24,7 +24,7 @@ export default function Header() {
             <Button 
                         icon={AlignJustify}
                         color="white"
-                        bg="red"
+                        bg="$red9"
                         scaleIcon={2}
                         onPress={() => setActive((x) => !x)}
                         hoverStyle={{ scale: 0.925 }}

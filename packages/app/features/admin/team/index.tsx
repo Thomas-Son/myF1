@@ -9,16 +9,16 @@ import {
 import { TextLink } from "solito/link";
 import { useEffect, useState } from "react";
 
-export default function DriverAdmin() {
+export default function TeamAdmin() {
 
-  const [drivers, setDrivers] = useState([])
+  const [teams, setTeams] = useState([])
 
   useEffect(() => {
         async function getData() {
             try {
-                const posts = await (await fetch("/api/drivers")).json();
-                setDrivers(posts.data);
-                console.log(drivers)
+                const posts = await (await fetch("/api/teams")).json();
+                setTeams(posts.data);
+                console.log(teams)
             } catch (error) {
                 throw Error(error);
             }
@@ -28,24 +28,24 @@ export default function DriverAdmin() {
 
   return(
     <YStack f={1} gap="$4" margin="auto" marginTop="$8" width="90%">
-      <H2>Liste des pilotes</H2>
+      <H2>Liste des équipes</H2>
       <Separator/>
 
       {
-        !drivers ? (null)
+        !teams ? (null)
         :
         (
-          drivers.map((driver) => (
+          teams.map((team) => (
             <XStack justifyContent="space-between">
-              <H3>{driver.name}</H3>
+              <H3>{team.name}</H3>
               <XStack gap="$4">
-                <TextLink href={"/admin/pilotes/" + driver._id + "/modifier"}>
+                <TextLink href={"/admin/equipes/" + team._id + "/modifier"}>
                     <Button width="$11">
                         Modifier
                     </Button>
                 </TextLink>
 
-                <TextLink href={"/admin/pilotes/" + driver._id + "/supprimer"}>
+                <TextLink href={"/admin/equipes/" + team._id + "/supprimer"}>
                     <Button width="$11">
                         Supprimer
                     </Button>
@@ -56,7 +56,7 @@ export default function DriverAdmin() {
         )
       }
 
-      <TextLink href="/admin/pilotes/ajouter">
+      <TextLink href="/admin/equipes/ajouter">
         <Button width="$12" margin="auto">Ajouter</Button>
       </TextLink>
     </YStack>
